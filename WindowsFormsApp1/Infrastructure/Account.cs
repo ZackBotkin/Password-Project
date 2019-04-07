@@ -20,5 +20,20 @@ namespace WindowsFormsApp1.Infrastructure
             _passWord = passWord;
         }
 
+        public string Service
+        {
+            get { return _service; }
+        }
+
+        public string UserName
+        {
+            get { return _userName; }
+        }
+
+        public string PassWord
+        {
+            get { return _passWord; }
+        }
+
     }
 }

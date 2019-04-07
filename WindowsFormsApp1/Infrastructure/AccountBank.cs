@@ -15,6 +15,12 @@ namespace WindowsFormsApp1.Infrastructure
         {
             _allAccounts = new Dictionary<string, Account>();
             _allAccounts["Microsoft"] = new Account("Microsoft", "foo", "bar");
+            _allAccounts["Facebook"] = new Account("Facebook", "bot", "baz");
+        }
+
+
+        public IList<string> GetAllAccountStrings() {
+            return _allAccounts.Keys.ToList();
         }
 
         public Account GetAccount(string service)
