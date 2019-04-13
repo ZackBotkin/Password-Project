@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,19 @@ namespace WindowsFormsApp1.Infrastructure
 
         public AccountBank()
         {
+            DBQuery query = new DBQuery();
+            DataTable table = query.GetData();
+
             _allAccounts = new Dictionary<string, Account>();
-            _allAccounts["Microsoft"] = new Account("Microsoft", "foo", "bar");
-            _allAccounts["Facebook"] = new Account("Facebook", "bot", "baz");
+
+            foreach (DataRow row in table.Rows)
+            {
+                _allAccounts[row[0].ToString()] = new Account(
+                    row[0].ToString(),
+                    row[1].ToString(), 
+                    row[2].ToString()
+                );
+            }
         }
 
 

@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
             _accountBank = ab;
             InitializeComponent();
             IList<string> allAccounts = ab.GetAllAccountStrings();
-            // TODO : figure out if it actually saves space to do it this way
+
             foreach (string account in allAccounts)
             {
                 this.comboBox1.Items.Add(account);
@@ -65,15 +65,6 @@ namespace WindowsFormsApp1
                 SetCurrentAccount(service.ToString());
             }
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
+    
     }
 }
