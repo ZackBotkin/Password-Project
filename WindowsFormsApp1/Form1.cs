@@ -65,6 +65,15 @@ namespace WindowsFormsApp1
                 SetCurrentAccount(service.ToString());
             }
         }
-    
+
+        private void TestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show("hello");
+        }
+
+        private void ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("hello");
+        }
     }
 }
