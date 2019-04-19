@@ -29,7 +29,6 @@ namespace WindowsFormsApp1.Infrastructure
             }
         }
 
-
         public IList<string> GetAllAccountStrings() {
             return _allAccounts.Keys.ToList();
         }

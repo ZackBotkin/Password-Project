@@ -21,59 +21,26 @@ namespace WindowsFormsApp1
         {
             _accountBank = ab;
             InitializeComponent();
-            IList<string> allAccounts = ab.GetAllAccountStrings();
-
-            foreach (string account in allAccounts)
+            IList<string> accountNames = ab.GetAllAccountStrings();
+            foreach(string accountName in accountNames)
             {
-                this.comboBox1.Items.Add(account);
+                this.listBox1.Items.Add(accountName);
             }
-
+            UpdateAccount(accountNames[0]);
         }
 
-        private void SetCurrentAccount(string serviceName)
+        private void UpdateAccount(string serviceName)
         {
-            _currentAccount = _accountBank.GetAccount(serviceName.ToString());
-            this.label1.Text = _currentAccount.Service;
+            _currentAccount = _accountBank.GetAccount(serviceName);
             this.textBox1.Text = _currentAccount.UserName;
             this.textBox2.Text = _currentAccount.PassWord;
-            this.label1.Show();
-            this.label2.Show();
-            this.label3.Show();
-            this.textBox1.Show();
-            this.textBox2.Show();
+            this.panel1.Visible = true;
         }
 
-        private void ResetToBlank()
+        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.label1.Hide();
-            this.label2.Hide();
-            this.label3.Hide();
-            this.textBox1.Hide();
-            this.textBox2.Hide();
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            object service = this.comboBox1.SelectedItem;
-            if (service == null)
-            {
-                MessageBox.Show("Please pick a valid value!");
-                ResetToBlank();
-            }
-            else
-            {
-                SetCurrentAccount(service.ToString());
-            }
-        }
-
-        private void TestToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show("hello");
-        }
-
-        private void ToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("hello");
+            string serviceName = this.listBox1.SelectedItem.ToString();
+            UpdateAccount(serviceName);            
         }
     }
 }
